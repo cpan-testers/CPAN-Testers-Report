@@ -4,7 +4,7 @@
 # A copy of the License was distributed with this file or you may obtain a 
 # copy of the License from http://dev.perl.org/licenses/
 
-package CPAN::Testers::Report::RFC2822;
+package CPAN::Testers::Fact::LegacyReport;
 use strict;
 use warnings;
 use Carp ();
@@ -22,6 +22,7 @@ sub validate_content {
     Carp::croak "missing key '$key'" 
       unless defined $content->{$key} && length $content->{$key};
   }
+  # XXX no other keys allowed
   # XXX more validation, e.g. grade names, etc.
 }
 
