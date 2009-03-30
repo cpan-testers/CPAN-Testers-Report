@@ -4,7 +4,7 @@
 # A copy of the License was distributed with this file or you may obtain a 
 # copy of the License from http://dev.perl.org/licenses/
 
-package CPAN::Testers::Fact::LegacyReport;
+package CPAN::Testers::Fact::TestOutput;
 use strict;
 use warnings;
 use Carp ();
@@ -14,18 +14,7 @@ use base 'CPAN::Metabase::Fact::Hash';
 our $VERSION = '0.001';
 $VERSION = eval $VERSION; ## no critic
 
-sub required_keys { qw/grade osname osversion archname perlversion textreport/ }
-
-sub content_metadata {
-  my ($self) = @_;
-  my $content = $self->content;
-  return {
-    grade       => [ Str => $content->{grade} ],
-    osname      => [ Str => $content->{osname} ],
-    archname    => [ Str => $content->{archname} ],
-    perlversion => [ Num => $content->{perlversion} ],
-  }
-}
+sub optional_keys { qw/configure build test/ }
   
 1;
 
@@ -33,28 +22,21 @@ __END__
 
 =head1 NAME
 
-CPAN::Testers::Fact::LegacyReport - an email-style report for CPAN Testers
+CPAN::Testers::Fact::TestOutput - Captured output from configuration, build and test
 
 =head1 SYNOPSIS
 
-  # assume $tr is an (upgraded) Test::Reporter object
-  # that has the accessors below (it doesn't yet)
-  
-  my $fact = CPAN::Testers::Fact::LegacyReport->new({
+  my $fact = CPAN::Testers::Fact::TestOutput->new(
     resource => 'cpan:///distfile/RJBS/CPAN-Metabase-Fact-0.001.tar.gz',
-    content     => {
-      grade         => $tr->grade,
-      osname        => $tr->osname,
-      osversion     => $tr->osversion
-      archname      => $tr->archname
-      perlversion   => $tr->perl_version_number
-      textreport    => $tr->report
+    content => {
+      configure => $makefile_pl_output,
+      build     => $make_output,
+      test      => $make_test_output,
     },
-  });
+  );
 
 =head1 DESCRIPTION
 
-Wraps up old-style CPAN Testers report
 
 =head1 USAGE
 
@@ -92,4 +74,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 =cut
+
 

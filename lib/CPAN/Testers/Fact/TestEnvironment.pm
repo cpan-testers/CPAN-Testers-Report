@@ -4,7 +4,7 @@
 # A copy of the License was distributed with this file or you may obtain a 
 # copy of the License from http://dev.perl.org/licenses/
 
-package CPAN::Testers::Fact::LegacyReport;
+package CPAN::Testers::Fact::TestEnvironment;
 use strict;
 use warnings;
 use Carp ();
@@ -14,47 +14,48 @@ use base 'CPAN::Metabase::Fact::Hash';
 our $VERSION = '0.001';
 $VERSION = eval $VERSION; ## no critic
 
-sub required_keys { qw/grade osname osversion archname perlversion textreport/ }
+# special_vars: $^X, UID/EID, GID/EGID, win32 stuff from CPAN::Reporter
+# -- dagolden, 2009-03-30 
+sub optional_keys { qw/environment_vars special_vars/ }
 
-sub content_metadata {
+sub validate_content {
   my ($self) = @_;
+  $self->SUPER::validate_content;
   my $content = $self->content;
-  return {
-    grade       => [ Str => $content->{grade} ],
-    osname      => [ Str => $content->{osname} ],
-    archname    => [ Str => $content->{archname} ],
-    perlversion => [ Num => $content->{perlversion} ],
+  for my $key ( keys %$content ) {
+    Carp::croak "key '$key' must be a hashref" unless ref $content->{$key} eq 'HASH';
   }
 }
-  
+
+# XXX do we want content_metadata? -- dagolden, 2009-03-30
+ 
 1;
 
 __END__
 
 =head1 NAME
 
-CPAN::Testers::Fact::LegacyReport - an email-style report for CPAN Testers
+CPAN::Testers::Fact::TestEnvironment - Environment vars and other local context during a CPAN Testers report
 
 =head1 SYNOPSIS
 
-  # assume $tr is an (upgraded) Test::Reporter object
-  # that has the accessors below (it doesn't yet)
-  
-  my $fact = CPAN::Testers::Fact::LegacyReport->new({
+  my $fact = CPAN::Testers::Fact::TestEnvironment>new(
     resource => 'cpan:///distfile/RJBS/CPAN-Metabase-Fact-0.001.tar.gz',
     content     => {
-      grade         => $tr->grade,
-      osname        => $tr->osname,
-      osversion     => $tr->osversion
-      archname      => $tr->archname
-      perlversion   => $tr->perl_version_number
-      textreport    => $tr->report
+      environment_vars => {
+        PERL5LIB  => $ENV{PERL5LIB},
+        TEMP      => $ENV{TEMP},
+      },
+      special_vars => {
+        'EXECUTABLE_NAME' => $^X,
+        'UID'             => $<,
+      },
     },
-  });
+  );
+
 
 =head1 DESCRIPTION
 
-Wraps up old-style CPAN Testers report
 
 =head1 USAGE
 
@@ -92,4 +93,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 =cut
+
 

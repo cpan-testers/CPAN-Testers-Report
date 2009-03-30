@@ -4,7 +4,7 @@
 # A copy of the License was distributed with this file or you may obtain a 
 # copy of the License from http://dev.perl.org/licenses/
 
-package CPAN::Testers::Fact::LegacyReport;
+package CPAN::Testers::Fact::Prereqs;
 use strict;
 use warnings;
 use Carp ();
@@ -14,47 +14,51 @@ use base 'CPAN::Metabase::Fact::Hash';
 our $VERSION = '0.001';
 $VERSION = eval $VERSION; ## no critic
 
-sub required_keys { qw/grade osname osversion archname perlversion textreport/ }
+sub optional_keys { qw/configure_requires requires build_requires/ }
 
-sub content_metadata {
+sub validate_content {
   my ($self) = @_;
+  $self->SUPER::validate_content;
   my $content = $self->content;
-  return {
-    grade       => [ Str => $content->{grade} ],
-    osname      => [ Str => $content->{osname} ],
-    archname    => [ Str => $content->{archname} ],
-    perlversion => [ Num => $content->{perlversion} ],
+  for my $key ( keys %$content ) {
+    Carp::croak "key '$key' must be a hashref" unless ref $content->{$key} eq 'HASH';
   }
 }
-  
+
 1;
 
 __END__
 
 =head1 NAME
 
-CPAN::Testers::Fact::LegacyReport - an email-style report for CPAN Testers
+CPAN::Testers::Fact::Prereqs - prerequisites detected in running a CPAN Testers report
 
 =head1 SYNOPSIS
 
-  # assume $tr is an (upgraded) Test::Reporter object
-  # that has the accessors below (it doesn't yet)
-  
-  my $fact = CPAN::Testers::Fact::LegacyReport->new({
+  my $fact = CPAN::Testers::Fact::Prereqs->new(
     resource => 'cpan:///distfile/RJBS/CPAN-Metabase-Fact-0.001.tar.gz',
     content     => {
-      grade         => $tr->grade,
-      osname        => $tr->osname,
-      osversion     => $tr->osversion
-      archname      => $tr->archname
-      perlversion   => $tr->perl_version_number
-      textreport    => $tr->report
+      configure_requires => {
+        'ExtUtils::MakeMaker' => 0,
+      },
+      build_requires => {
+        'Test::More' => '0.60',
+      },
+      requires => {
+        'Carp' => 0,
+        'File::Spec' => 0.82,
+      },
     },
-  });
+  );
+
 
 =head1 DESCRIPTION
 
-Wraps up old-style CPAN Testers report
+Prerequisites detected.  There are three valid types: configure_requires, requires,
+and build_requires.
+
+The prerequisite must be a version number or logical comparision as defined in the
+META.yml specification document.
 
 =head1 USAGE
 
@@ -92,4 +96,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 =cut
+
 

@@ -4,7 +4,7 @@
 # A copy of the License was distributed with this file or you may obtain a 
 # copy of the License from http://dev.perl.org/licenses/
 
-package CPAN::Testers::Fact::LegacyReport;
+package CPAN::Testers::Fact::PerlConfig;
 use strict;
 use warnings;
 use Carp ();
@@ -14,16 +14,16 @@ use base 'CPAN::Metabase::Fact::Hash';
 our $VERSION = '0.001';
 $VERSION = eval $VERSION; ## no critic
 
-sub required_keys { qw/grade osname osversion archname perlversion textreport/ }
+sub required_keys { return qw/build config/ }
 
+# XXX replace this with whatever Tux says is useful -- dagolden, 2009-03-30 
 sub content_metadata {
   my ($self) = @_;
   my $content = $self->content;
   return {
-    grade       => [ Str => $content->{grade} ],
-    osname      => [ Str => $content->{osname} ],
-    archname    => [ Str => $content->{archname} ],
-    perlversion => [ Num => $content->{perlversion} ],
+    osname      => [ Str => $content->{config}{osname} ],
+    archname    => [ Str => $content->{config}{archname} ],
+    version     => [ Num => $content->{config}{version} ],
   }
 }
   
@@ -33,28 +33,24 @@ __END__
 
 =head1 NAME
 
-CPAN::Testers::Fact::LegacyReport - an email-style report for CPAN Testers
+CPAN::Testers::Fact::PerlConfig - Perl build and configuration information for a CPAN Testers report
 
 =head1 SYNOPSIS
 
-  # assume $tr is an (upgraded) Test::Reporter object
-  # that has the accessors below (it doesn't yet)
-  
-  my $fact = CPAN::Testers::Fact::LegacyReport->new({
+  use Config::Perl::V;
+
+  my $info = Config::Perl::V::myconfig();
+  my $content; 
+  @{$content}{build,config} = @{$info}{build,config};
+
+  my $fact = CPAN::Testers::TestSummary->new(
     resource => 'cpan:///distfile/RJBS/CPAN-Metabase-Fact-0.001.tar.gz',
-    content     => {
-      grade         => $tr->grade,
-      osname        => $tr->osname,
-      osversion     => $tr->osversion
-      archname      => $tr->archname
-      perlversion   => $tr->perl_version_number
-      textreport    => $tr->report
-    },
-  });
+    content     => $content,
+  );
 
 =head1 DESCRIPTION
 
-Wraps up old-style CPAN Testers report
+Summarize perl build and config from a CPAN testers run 
 
 =head1 USAGE
 
@@ -92,4 +88,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 =cut
+
 

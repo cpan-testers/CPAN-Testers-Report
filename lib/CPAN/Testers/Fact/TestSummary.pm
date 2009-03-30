@@ -4,7 +4,7 @@
 # A copy of the License was distributed with this file or you may obtain a 
 # copy of the License from http://dev.perl.org/licenses/
 
-package CPAN::Testers::Fact::LegacyReport;
+package CPAN::Testers::Fact::TestSummary;
 use strict;
 use warnings;
 use Carp ();
@@ -14,50 +14,54 @@ use base 'CPAN::Metabase::Fact::Hash';
 our $VERSION = '0.001';
 $VERSION = eval $VERSION; ## no critic
 
-sub required_keys { qw/grade osname osversion archname perlversion textreport/ }
+sub required_keys { qw/grade osname osversion archname perl_version/ }
 
 sub content_metadata {
   my ($self) = @_;
   my $content = $self->content;
   return {
-    grade       => [ Str => $content->{grade} ],
-    osname      => [ Str => $content->{osname} ],
-    archname    => [ Str => $content->{archname} ],
-    perlversion => [ Num => $content->{perlversion} ],
+    grade         => [ Str => $content->{grade} ],
+    osname        => [ Str => $content->{osname} ],
+    archname      => [ Str => $content->{archname} ],
+    perl_version  => [ Num => $content->{perl_version} ],
   }
 }
-  
+
+# should validate grades, etc. -- dagolden, 2009-03-30 
+
 1;
 
 __END__
 
 =head1 NAME
 
-CPAN::Testers::Fact::LegacyReport - an email-style report for CPAN Testers
+CPAN::Testers::Fact::TestSummary - summary of a CPAN Testers analysis of a distribution
 
 =head1 SYNOPSIS
 
   # assume $tr is an (upgraded) Test::Reporter object
   # that has the accessors below (it doesn't yet)
   
-  my $fact = CPAN::Testers::Fact::LegacyReport->new({
+  my $fact = CPAN::Testers::TestSummary->new(
     resource => 'cpan:///distfile/RJBS/CPAN-Metabase-Fact-0.001.tar.gz',
     content     => {
       grade         => $tr->grade,
       osname        => $tr->osname,
       osversion     => $tr->osversion
       archname      => $tr->archname
-      perlversion   => $tr->perl_version_number
-      textreport    => $tr->report
+      perl_version  => $tr->perl_version_number
     },
-  });
+  );
 
 =head1 DESCRIPTION
 
-Wraps up old-style CPAN Testers report
+Summarize CPAN testers run -- this is equivalent to the content of the old
+email Subject line, plus explicit OS name and perl version, which previously had
+to be parsed out of the report
 
 =head1 USAGE
 
+# XXX document valid grades, etc. -- dagolden, 2009-03-30 
 
 =head1 BUGS
 
@@ -92,4 +96,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 =cut
+
 

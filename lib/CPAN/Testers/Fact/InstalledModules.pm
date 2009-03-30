@@ -4,7 +4,7 @@
 # A copy of the License was distributed with this file or you may obtain a 
 # copy of the License from http://dev.perl.org/licenses/
 
-package CPAN::Testers::Fact::LegacyReport;
+package CPAN::Testers::Fact::InstalledModules;
 use strict;
 use warnings;
 use Carp ();
@@ -14,47 +14,53 @@ use base 'CPAN::Metabase::Fact::Hash';
 our $VERSION = '0.001';
 $VERSION = eval $VERSION; ## no critic
 
-sub required_keys { qw/grade osname osversion archname perlversion textreport/ }
+sub optional_keys { qw/prereqs toolchain undeclared/ };
 
-sub content_metadata {
+sub validate_content {
   my ($self) = @_;
+  $self->SUPER::validate_content;
   my $content = $self->content;
-  return {
-    grade       => [ Str => $content->{grade} ],
-    osname      => [ Str => $content->{osname} ],
-    archname    => [ Str => $content->{archname} ],
-    perlversion => [ Num => $content->{perlversion} ],
+  for my $key ( keys %$content ) {
+    Carp::croak "key '$key' must be a hashref" unless ref $content->{$key} eq 'HASH';
   }
 }
-  
+
 1;
 
 __END__
 
 =head1 NAME
 
-CPAN::Testers::Fact::LegacyReport - an email-style report for CPAN Testers
+CPAN::Testers::Fact::InstalledModules - versions of particular modules installed on a system
 
 =head1 SYNOPSIS
 
-  # assume $tr is an (upgraded) Test::Reporter object
-  # that has the accessors below (it doesn't yet)
-  
-  my $fact = CPAN::Testers::Fact::LegacyReport->new({
+  my $fact = CPAN::Testers::Fact::InstalledModules->new({
     resource => 'cpan:///distfile/RJBS/CPAN-Metabase-Fact-0.001.tar.gz',
     content     => {
-      grade         => $tr->grade,
-      osname        => $tr->osname,
-      osversion     => $tr->osversion
-      archname      => $tr->archname
-      perlversion   => $tr->perl_version_number
-      textreport    => $tr->report
+      prereqs => {
+        'Test::More' => '0.80',
+      },
+      toolchain => {
+        'CPAN' => '1.92', 
+      },
     },
   });
 
 =head1 DESCRIPTION
 
-Wraps up old-style CPAN Testers report
+Versions detected of modules installed on a system.  There are three valid
+types: prereqs, toolchain, undeclared.  
+
+Prereqs are the versions of modules listed in any of the prerequisite fields.  
+
+Toolchain module versions are intended to reflect the state of the toolchain
+used to test the distribution (e.g.  CPAN, Test::Harness, etc.).  
+
+Undeclared module versions capture the version of modules that were detected
+as being used by the distribution, but that were not listed explicitly as 
+prerequisites.  This will often be core modules or submodules, but could 
+include missing dependencies.
 
 =head1 USAGE
 
@@ -92,4 +98,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 =cut
+
 
