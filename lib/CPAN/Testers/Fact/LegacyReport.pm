@@ -15,16 +15,20 @@ our $VERSION = '0.001';
 $VERSION = eval $VERSION; ## no critic
 
 sub required_keys { qw/grade osname osversion archname perlversion textreport/ }
+sub optional_keys { qw/nntp_id/ }
 
 sub content_metadata {
   my ($self) = @_;
   my $content = $self->content;
-  return {
+  my $meta = {
     grade       => [ Str => $content->{grade} ],
     osname      => [ Str => $content->{osname} ],
     archname    => [ Str => $content->{archname} ],
-    perlversion => [ Num => $content->{perlversion} ],
-  }
+    perlversion => [ Str => $content->{perlversion} ],
+  };
+  $meta->{nntp_id} = [ Num => $content->{nntp_id} ]
+    if defined $content->{nntp_id};
+  return $meta;
 }
   
 1;

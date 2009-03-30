@@ -5,6 +5,7 @@
 # copy of the License from http://dev.perl.org/licenses/
 
 package CPAN::Testers::Report;
+use 5.006;
 use strict;
 use warnings;
 
