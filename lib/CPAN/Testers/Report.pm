@@ -13,6 +13,7 @@ our $VERSION = '0.001';
 $VERSION = eval $VERSION; ## no critic
 
 use base 'CPAN::Metabase::Report';
+__PACKAGE__->load_fact_classes;
 
 sub report_spec { 
   return {
