@@ -9,7 +9,7 @@ use strict;
 use warnings;
 use Carp ();
 
-use base 'CPAN::Metabase::Fact::Hash';
+use base 'Metabase::Fact::Hash';
 
 our $VERSION = '0.001';
 $VERSION = eval $VERSION; ## no critic

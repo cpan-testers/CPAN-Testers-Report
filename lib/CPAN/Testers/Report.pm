@@ -12,7 +12,7 @@ use warnings;
 our $VERSION = '0.001';
 $VERSION = eval $VERSION; ## no critic
 
-use base 'CPAN::Metabase::Report';
+use base 'Metabase::Report';
 __PACKAGE__->load_fact_classes;
 
 sub report_spec { 
