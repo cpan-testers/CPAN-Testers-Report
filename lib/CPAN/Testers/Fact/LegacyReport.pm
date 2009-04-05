@@ -14,7 +14,7 @@ use base 'Metabase::Fact::Hash';
 our $VERSION = '0.001';
 $VERSION = eval $VERSION; ## no critic
 
-sub required_keys { qw/grade osname osversion archname perlversion textreport/ }
+sub required_keys { qw/grade osname osversion archname perl_version textreport/ }
 sub optional_keys { qw/nntp_id/ }
 
 sub content_metadata {
@@ -23,8 +23,9 @@ sub content_metadata {
   my $meta = {
     grade       => [ Str => $content->{grade} ],
     osname      => [ Str => $content->{osname} ],
+    osversion   => [ Str => $content->{osversion} ],
     archname    => [ Str => $content->{archname} ],
-    perlversion => [ Str => $content->{perlversion} ],
+    perl_version => [ Str => $content->{perl_version} ],
   };
   $meta->{nntp_id} = [ Num => $content->{nntp_id} ]
     if defined $content->{nntp_id};
