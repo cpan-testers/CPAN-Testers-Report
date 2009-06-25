@@ -25,6 +25,7 @@ sub report_spec {
     'CPAN::Testers::Fact::TestEnvironment' => '0+',
     'CPAN::Testers::Fact::Prereqs' => '0+', # declared versions
     'CPAN::Testers::Fact::InstalledModules' => '0+', 
+    # XXX needs NNTP_ID for old reports -- dagolden, 2009-06-24
     # future goals
     # 'CPAN::Testers::Fact::TAPArchive' => 1, 
   }

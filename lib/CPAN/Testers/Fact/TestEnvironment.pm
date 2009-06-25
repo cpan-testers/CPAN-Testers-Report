@@ -56,6 +56,7 @@ CPAN::Testers::Fact::TestEnvironment - Environment vars and other local context 
 
 =head1 DESCRIPTION
 
+Describes aspects of the environment during a CPAN Testers run.
 
 =head1 USAGE
 

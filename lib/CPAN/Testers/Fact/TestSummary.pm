@@ -42,7 +42,7 @@ CPAN::Testers::Fact::TestSummary - summary of a CPAN Testers analysis of a distr
   # assume $tr is an (upgraded) Test::Reporter object
   # that has the accessors below (it doesn't yet)
   
-  my $fact = CPAN::Testers::TestSummary->new(
+  my $fact = CPAN::Testers::Fact::TestSummary->new(
     resource => 'cpan:///distfile/RJBS/CPAN-Metabase-Fact-0.001.tar.gz',
     content     => {
       grade         => $tr->grade,

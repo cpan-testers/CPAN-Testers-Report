@@ -43,7 +43,7 @@ CPAN::Testers::Fact::PerlConfig - Perl build and configuration information for a
   my $content; 
   @{$content}{build,config} = @{$info}{build,config};
 
-  my $fact = CPAN::Testers::TestSummary->new(
+  my $fact = CPAN::Testers::Fact::PerlConfig->new(
     resource => 'cpan:///distfile/RJBS/CPAN-Metabase-Fact-0.001.tar.gz',
     content     => $content,
   );
