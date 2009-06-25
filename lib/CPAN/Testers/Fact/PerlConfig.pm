@@ -11,7 +11,7 @@ use Carp ();
 
 use base 'Metabase::Fact::Hash';
 
-our $VERSION = '0.001';
+our $VERSION = '0.10';
 $VERSION = eval $VERSION; ## no critic
 
 sub required_keys { return qw/build config/ }
