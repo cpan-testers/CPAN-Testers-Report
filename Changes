@@ -7,5 +7,7 @@
 
 Revision history for CPAN-Testers-Report
 
-0.001 Sat Mar 28 12:20:03 2009
-    - original skeleton created with Module::Boilerplate
+0.10 Wed Jun 24 22:38:37 EDT 2009
+
+    - new CPAN::Testers::Report based on Metabase::Fact classes;
+      Supercedes prior draft implementation by Adam Foxson

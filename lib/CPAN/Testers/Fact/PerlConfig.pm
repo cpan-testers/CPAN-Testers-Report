@@ -11,7 +11,7 @@ use Carp ();
 
 use base 'Metabase::Fact::Hash';
 
-our $VERSION = '0.001';
+our $VERSION = '0.10';
 $VERSION = eval $VERSION; ## no critic
 
 sub required_keys { return qw/build config/ }
@@ -43,7 +43,7 @@ CPAN::Testers::Fact::PerlConfig - Perl build and configuration information for a
   my $content; 
   @{$content}{build,config} = @{$info}{build,config};
 
-  my $fact = CPAN::Testers::TestSummary->new(
+  my $fact = CPAN::Testers::Fact::PerlConfig->new(
     resource => 'cpan:///distfile/RJBS/CPAN-Metabase-Fact-0.001.tar.gz',
     content     => $content,
   );

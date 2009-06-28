@@ -11,7 +11,7 @@ use Carp ();
 
 use base 'Metabase::Fact::Hash';
 
-our $VERSION = '0.001';
+our $VERSION = '0.10';
 $VERSION = eval $VERSION; ## no critic
 
 # special_vars: $^X, UID/EID, GID/EGID, win32 stuff from CPAN::Reporter
@@ -56,6 +56,7 @@ CPAN::Testers::Fact::TestEnvironment - Environment vars and other local context 
 
 =head1 DESCRIPTION
 
+Describes aspects of the environment during a CPAN Testers run.
 
 =head1 USAGE
 

@@ -11,7 +11,7 @@ use Carp ();
 
 use base 'Metabase::Fact::String';
 
-our $VERSION = '0.001';
+our $VERSION = '0.10';
 $VERSION = eval $VERSION; ## no critic
 
 1;
