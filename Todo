@@ -6,3 +6,4 @@
 
 - capture hostname in report
 - capture CPAN::Testers::Client version (or equivalent) in report
+- capture signature() from Config::Perl::V
