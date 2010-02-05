@@ -11,7 +11,7 @@ use Carp ();
 
 use base 'Metabase::Fact::Hash';
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 $VERSION = eval $VERSION; ## no critic
 
 sub required_keys { qw/grade osname osversion archname perl_version/ }

@@ -7,6 +7,9 @@
 
 Revision history for CPAN-Testers-Report
 
+0.11
+  
+
 0.10 Wed Jun 24 22:38:37 EDT 2009
 
     - new CPAN::Testers::Report based on Metabase::Fact classes;
