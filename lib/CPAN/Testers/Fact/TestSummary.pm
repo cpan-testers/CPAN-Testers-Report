@@ -20,10 +20,19 @@ sub content_metadata {
   my ($self) = @_;
   my $content = $self->content;
   return {
-    grade         => [ Str => $content->{grade} ],
-    osname        => [ Str => $content->{osname} ],
-    archname      => [ Str => $content->{archname} ],
-    perl_version  => [ Num => $content->{perl_version} ],
+    grade         => $content->{grade} ,
+    osname        => $content->{osname} ,
+    archname      => $content->{archname} ,
+    perl_version  => $content->{perl_version} ,
+  }
+}
+
+sub content_metadata_types {
+  return {
+    grade         => '//str', 
+    osname        => '//str',
+    archname      => '//str',
+    perl_version  => '//str',
   }
 }
 

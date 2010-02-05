@@ -39,6 +39,14 @@ sub content_metadata {
   }
 }
   
+sub content_metadata_types {
+  my ($self) = @_;
+  for my $fact ( $self->facts ) {
+    next unless $fact->type eq 'CPAN::Testers::Fact::LegacyReport';
+    return $fact->content_metadata_types;
+  }
+}
+  
 1;
 
 __END__
