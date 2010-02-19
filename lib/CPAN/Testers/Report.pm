@@ -34,7 +34,7 @@ sub report_spec {
 sub content_metadata {
   my ($self) = @_;
   for my $fact ( $self->facts ) {
-    next unless $fact->type eq 'CPAN::Testers::Fact::LegacyReport';
+    next unless $fact->type eq 'CPAN-Testers-Fact-LegacyReport';
     return $fact->content_metadata;
   }
 }
