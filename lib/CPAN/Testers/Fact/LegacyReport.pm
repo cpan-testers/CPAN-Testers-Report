@@ -58,7 +58,7 @@ CPAN::Testers::Fact::LegacyReport - an email-style report for CPAN Testers
       osname        => $tr->osname,
       osversion     => $tr->osversion
       archname      => $tr->archname
-      perlversion   => $tr->perl_version_number
+      perl_version  => $tr->perl_version_number
       textreport    => $tr->report
     },
   });
