@@ -9,7 +9,8 @@ use strict;
 use warnings;
 use Carp ();
 
-use base 'Metabase::Fact::String';
+use Metabase::Fact::String;
+our @ISA = qw/Metabase::Fact::String/;
 
 our $VERSION = '1.999';
 $VERSION = eval $VERSION; ## no critic

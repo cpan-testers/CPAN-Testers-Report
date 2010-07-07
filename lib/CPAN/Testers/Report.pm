@@ -12,7 +12,8 @@ use warnings;
 our $VERSION = '1.999';
 $VERSION = eval $VERSION; ## no critic
 
-use base 'Metabase::Report';
+use Metabase::Report;
+our @ISA = qw/Metabase::Report/;
 __PACKAGE__->load_fact_classes;
 
 sub report_spec { 
