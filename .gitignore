@@ -12,3 +12,4 @@ MANIFEST
 !MANIFEST.SKIP
 inc
 *.tar.gz
+/CPAN-Testers-Report-*

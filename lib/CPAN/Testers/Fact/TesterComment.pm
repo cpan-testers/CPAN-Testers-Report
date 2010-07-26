@@ -4,24 +4,19 @@
 # A copy of the License was distributed with this file or you may obtain a 
 # copy of the License from http://dev.perl.org/licenses/
 
-package CPAN::Testers::Fact::TesterComment;
 use strict;
 use warnings;
+package CPAN::Testers::Fact::TesterComment;
+# ABSTRACT: comment about a CPAN Tester report
+
 use Carp ();
 
-use Metabase::Fact::String;
+use Metabase::Fact::String 0.016;
 our @ISA = qw/Metabase::Fact::String/;
-
-our $VERSION = '1.999';
-$VERSION = eval $VERSION; ## no critic
 
 1;
 
 __END__
-
-=head1 NAME
-
-CPAN::Testers::Fact::TesterComment - comment about a CPAN Tester report
 
 =head1 SYNOPSIS
 
@@ -46,29 +41,6 @@ L<http://rt.cpan.org/Dist/Display.html?Queue=CPAN-Testers-Report>
 
 When submitting a bug or request, please include a test-file or a patch to an
 existing test-file that illustrates the bug or desired feature.
-
-=head1 AUTHOR
-
-=over 
-
-=item * David A. Golden (DAGOLDEN)
-
-=back
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (c) 2009 by David A. Golden
-
-Licensed under the same terms as Perl itself (the "License").
-You may not use this file except in compliance with the License.
-A copy of the License was distributed with this file or you may obtain a 
-copy of the License from http://dev.perl.org/licenses/
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
 
 =cut
 
