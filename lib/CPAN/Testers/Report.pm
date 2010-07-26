@@ -1,9 +1,3 @@
-# Copyright (c) 2009 by David Golden. All rights reserved.
-# Licensed under terms of Perl itself (the "License").
-# You may not use this file except in compliance with the License.
-# A copy of the License was distributed with this file or you may obtain a 
-# copy of the License from http://dev.perl.org/licenses/
-
 use 5.006;
 use strict;
 use warnings;
@@ -80,7 +74,7 @@ Metabase report class encapsulating Facts about a CPAN Testers report
 
 =head1 USAGE
 
-CPAN::Testers::Report subclases L<Metabase::Report.  See that module for API.
+CPAN::Testers::Report subclases L<Metabase::Report>.  See that module for API.
 See L<Test::Reporter::Transport::Metabase> for an example of usage.
 
 =head1 BUGS
