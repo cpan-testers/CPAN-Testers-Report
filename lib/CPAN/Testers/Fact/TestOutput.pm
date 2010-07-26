@@ -15,6 +15,8 @@ sub optional_keys { qw/configure build test/ }
 
 __END__
 
+=for Pod::Coverage optional_keys
+
 =head1 SYNOPSIS
 
   my $fact = CPAN::Testers::Fact::TestOutput->new(

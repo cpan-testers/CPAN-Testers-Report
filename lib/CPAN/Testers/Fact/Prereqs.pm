@@ -25,6 +25,8 @@ sub validate_content {
 __END__
 
 
+=for Pod::Coverage optional_keys
+
 =head1 SYNOPSIS
 
   my $fact = CPAN::Testers::Fact::Prereqs->new(

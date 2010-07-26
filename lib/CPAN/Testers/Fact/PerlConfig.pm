@@ -34,6 +34,8 @@ sub content_metadata_types {
 
 __END__
 
+=for Pod::Coverage required_keys
+
 =head1 SYNOPSIS
 
   use Config::Perl::V;

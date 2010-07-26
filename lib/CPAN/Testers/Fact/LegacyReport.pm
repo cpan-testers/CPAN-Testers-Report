@@ -37,6 +37,8 @@ sub content_metadata_types {
 
 __END__
 
+=for Pod::Coverage required_keys
+
 =head1 SYNOPSIS
 
   # assume $tr is an (upgraded) Test::Reporter object
