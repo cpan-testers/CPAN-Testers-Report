@@ -13,3 +13,4 @@ MANIFEST
 inc
 *.tar.gz
 /CPAN-Testers-Report-*
+/.build
