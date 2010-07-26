@@ -2,6 +2,8 @@ Revision history for CPAN-Testers-Report
 
 {{$NEXT}}
 
+1.999001  2010-07-26 16:22:22 EST5EDT
+
     - removed 'base' pragam
 
     - migrated distribution management to Dist::Zilla
