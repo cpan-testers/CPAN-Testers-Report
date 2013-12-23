@@ -71,7 +71,7 @@ Metabase report class encapsulating Facts about a CPAN Testers report
 
 =head1 USAGE
 
-CPAN::Testers::Report subclases L<Metabase::Report>.  See that module for API.
+CPAN::Testers::Report subclasses L<Metabase::Report>.  See that module for API.
 See L<Test::Reporter::Transport::Metabase> for an example of usage.
 
 =head1 BUGS

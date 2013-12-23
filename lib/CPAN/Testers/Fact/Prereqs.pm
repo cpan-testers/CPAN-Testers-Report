@@ -51,7 +51,7 @@ __END__
 Prerequisites detected.  There are three valid types: configure_requires, requires,
 and build_requires.
 
-The prerequisite must be a version number or logical comparision as defined in the
+The prerequisite must be a version number or logical comparison as defined in the
 META.yml specification document.
 
 =head1 USAGE
