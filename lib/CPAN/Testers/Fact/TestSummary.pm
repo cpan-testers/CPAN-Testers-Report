@@ -1,6 +1,7 @@
 use 5.006;
 use strict;
 use warnings;
+
 package CPAN::Testers::Fact::TestSummary;
 # ABSTRACT: summary of a CPAN Testers analysis of a distribution
 
@@ -12,26 +13,26 @@ our @ISA = qw/Metabase::Fact::Hash/;
 sub required_keys { qw/grade osname osversion archname perl_version/ }
 
 sub content_metadata {
-  my ($self) = @_;
-  my $content = $self->content;
-  return {
-    grade         => $content->{grade} ,
-    osname        => $content->{osname} ,
-    archname      => $content->{archname} ,
-    perl_version  => $content->{perl_version} ,
-  }
+    my ($self) = @_;
+    my $content = $self->content;
+    return {
+        grade        => $content->{grade},
+        osname       => $content->{osname},
+        archname     => $content->{archname},
+        perl_version => $content->{perl_version},
+    };
 }
 
 sub content_metadata_types {
-  return {
-    grade         => '//str', 
-    osname        => '//str',
-    archname      => '//str',
-    perl_version  => '//str',
-  }
+    return {
+        grade        => '//str',
+        osname       => '//str',
+        archname     => '//str',
+        perl_version => '//str',
+    };
 }
 
-# should validate grades, etc. -- dagolden, 2009-03-30 
+# should validate grades, etc. -- dagolden, 2009-03-30
 
 1;
 

@@ -20,5 +20,5 @@ my @classes = qw (
 
 plan tests => scalar @classes;
 
-require_ok( $_ ) for @classes;
+require_ok($_) for @classes;
 

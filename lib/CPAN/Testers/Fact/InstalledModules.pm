@@ -1,6 +1,7 @@
 use 5.006;
 use strict;
 use warnings;
+
 package CPAN::Testers::Fact::InstalledModules;
 # ABSTRACT: Versions of particular modules installed on a system
 
@@ -9,15 +10,15 @@ use Carp ();
 use Metabase::Fact::Hash 0.016;
 our @ISA = qw/Metabase::Fact::Hash/;
 
-sub optional_keys { qw/prereqs toolchain undeclared/ };
+sub optional_keys { qw/prereqs toolchain undeclared/ }
 
 sub validate_content {
-  my ($self) = @_;
-  $self->SUPER::validate_content;
-  my $content = $self->content;
-  for my $key ( keys %$content ) {
-    Carp::croak "key '$key' must be a hashref" unless ref $content->{$key} eq 'HASH';
-  }
+    my ($self) = @_;
+    $self->SUPER::validate_content;
+    my $content = $self->content;
+    for my $key ( keys %$content ) {
+        Carp::croak "key '$key' must be a hashref" unless ref $content->{$key} eq 'HASH';
+    }
 }
 
 1;

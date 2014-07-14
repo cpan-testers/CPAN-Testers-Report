@@ -1,6 +1,7 @@
 use 5.006;
 use strict;
 use warnings;
+
 package CPAN::Testers::Fact::TestOutput;
 # ABSTRACT: output from configuration, build and test
 
@@ -10,7 +11,7 @@ use Metabase::Fact::Hash 0.016;
 our @ISA = qw/Metabase::Fact::Hash/;
 
 sub optional_keys { qw/configure build test/ }
-  
+
 1;
 
 __END__

@@ -1,6 +1,7 @@
 use 5.006;
 use strict;
 use warnings;
+
 package CPAN::Testers::Fact::LegacyReport;
 # ABSTRACT: an email-style report for CPAN Testers
 
@@ -12,27 +13,27 @@ our @ISA = qw/Metabase::Fact::Hash/;
 sub required_keys { qw/grade osname osversion archname perl_version textreport/ }
 
 sub content_metadata {
-  my ($self) = @_;
-  my $content = $self->content;
-  return {
-    grade       => $content->{grade},
-    osname      => $content->{osname},
-    osversion   => $content->{osversion},
-    archname    => $content->{archname},
-    perl_version => $content->{perl_version},
-  };
+    my ($self) = @_;
+    my $content = $self->content;
+    return {
+        grade        => $content->{grade},
+        osname       => $content->{osname},
+        osversion    => $content->{osversion},
+        archname     => $content->{archname},
+        perl_version => $content->{perl_version},
+    };
 }
-  
+
 sub content_metadata_types {
-  return {
-    grade       => '//str',
-    osname      => '//str',
-    osversion   => '//str',
-    archname    => '//str',
-    perl_version => '//str',
-  };
+    return {
+        grade        => '//str',
+        osname       => '//str',
+        osversion    => '//str',
+        archname     => '//str',
+        perl_version => '//str',
+    };
 }
-  
+
 1;
 
 __END__

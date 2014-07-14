@@ -1,6 +1,7 @@
 use 5.006;
 use strict;
 use warnings;
+
 package CPAN::Testers::Fact::TestEnvironment;
 # ABSTRACT: Environment vars and other local context during a CPAN Testers report
 
@@ -10,20 +11,20 @@ use Metabase::Fact::Hash 0.016;
 our @ISA = qw/Metabase::Fact::Hash/;
 
 # special_vars: $^X, UID/EID, GID/EGID, win32 stuff from CPAN::Reporter
-# -- dagolden, 2009-03-30 
+# -- dagolden, 2009-03-30
 sub optional_keys { qw/environment_vars special_vars/ }
 
 sub validate_content {
-  my ($self) = @_;
-  $self->SUPER::validate_content;
-  my $content = $self->content;
-  for my $key ( keys %$content ) {
-    Carp::croak "key '$key' must be a hashref" unless ref $content->{$key} eq 'HASH';
-  }
+    my ($self) = @_;
+    $self->SUPER::validate_content;
+    my $content = $self->content;
+    for my $key ( keys %$content ) {
+        Carp::croak "key '$key' must be a hashref" unless ref $content->{$key} eq 'HASH';
+    }
 }
 
 # XXX do we want content_metadata? -- dagolden, 2009-03-30
- 
+
 1;
 
 __END__

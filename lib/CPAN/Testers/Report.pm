@@ -9,35 +9,35 @@ use Metabase::Report 0.016 ();
 our @ISA = qw/Metabase::Report/;
 CPAN::Testers::Report->load_fact_classes;
 
-sub report_spec { 
-  return {
-    'CPAN::Testers::Fact::LegacyReport' => 1,
-    'CPAN::Testers::Fact::TestSummary' => 1, # include date
-    'CPAN::Testers::Fact::TestOutput' => '0+', # eventually by phase
-    'CPAN::Testers::Fact::TesterComment' => '0+',
-    'CPAN::Testers::Fact::PerlConfig' => '0+',
-    'CPAN::Testers::Fact::TestEnvironment' => '0+',
-    'CPAN::Testers::Fact::Prereqs' => '0+', # declared versions
-    'CPAN::Testers::Fact::InstalledModules' => '0+', 
-    # XXX needs NNTP_ID for old reports -- dagolden, 2009-06-24
-    # future goals
-    # 'CPAN::Testers::Fact::TAPArchive' => 1, 
-  }
+sub report_spec {
+    return {
+        'CPAN::Testers::Fact::LegacyReport'     => 1,
+        'CPAN::Testers::Fact::TestSummary'      => 1,    # include date
+        'CPAN::Testers::Fact::TestOutput'       => '0+', # eventually by phase
+        'CPAN::Testers::Fact::TesterComment'    => '0+',
+        'CPAN::Testers::Fact::PerlConfig'       => '0+',
+        'CPAN::Testers::Fact::TestEnvironment'  => '0+',
+        'CPAN::Testers::Fact::Prereqs'          => '0+', # declared versions
+        'CPAN::Testers::Fact::InstalledModules' => '0+',
+        # XXX needs NNTP_ID for old reports -- dagolden, 2009-06-24
+        # future goals
+        # 'CPAN::Testers::Fact::TAPArchive' => 1,
+    };
 }
 
 sub content_metadata {
-  my ($self) = @_;
-  for my $fact ( $self->facts ) {
-    next unless $fact->type eq 'CPAN-Testers-Fact-LegacyReport';
-    return $fact->content_metadata;
-  }
+    my ($self) = @_;
+    for my $fact ( $self->facts ) {
+        next unless $fact->type eq 'CPAN-Testers-Fact-LegacyReport';
+        return $fact->content_metadata;
+    }
 }
-  
+
 sub content_metadata_types {
-  require CPAN::Testers::Fact::LegacyReport;
-  return CPAN::Testers::Fact::LegacyReport->content_metadata_types;
+    require CPAN::Testers::Fact::LegacyReport;
+    return CPAN::Testers::Fact::LegacyReport->content_metadata_types;
 }
-  
+
 1;
 
 __END__

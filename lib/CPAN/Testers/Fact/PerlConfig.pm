@@ -1,6 +1,7 @@
 use 5.006;
 use strict;
 use warnings;
+
 package CPAN::Testers::Fact::PerlConfig;
 # ABSTRACT: Perl build and configuration information for a CPAN Testers report
 
@@ -11,25 +12,25 @@ our @ISA = qw/Metabase::Fact::Hash/;
 
 sub required_keys { return qw/build config/ }
 
-# XXX replace this with whatever Tux says is useful -- dagolden, 2009-03-30 
+# XXX replace this with whatever Tux says is useful -- dagolden, 2009-03-30
 sub content_metadata {
-  my ($self) = @_;
-  my $content = $self->content;
-  return {
-    osname      => $content->{config}{osname},
-    archname    => $content->{config}{archname},
-    version     => $content->{config}{version},
-  }
+    my ($self) = @_;
+    my $content = $self->content;
+    return {
+        osname   => $content->{config}{osname},
+        archname => $content->{config}{archname},
+        version  => $content->{config}{version},
+    };
 }
-  
+
 sub content_metadata_types {
-  return {
-    osname      => '//str',
-    archname    => '//str',
-    version     => '//str',
-  }
+    return {
+        osname   => '//str',
+        archname => '//str',
+        version  => '//str',
+    };
 }
-  
+
 1;
 
 __END__

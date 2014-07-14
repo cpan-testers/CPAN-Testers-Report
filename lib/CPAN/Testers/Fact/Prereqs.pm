@@ -1,6 +1,7 @@
 use 5.006;
 use strict;
 use warnings;
+
 package CPAN::Testers::Fact::Prereqs;
 # ABSTRACT: prerequisites detected in running a CPAN Testers report
 
@@ -12,12 +13,12 @@ our @ISA = qw/Metabase::Fact::Hash/;
 sub optional_keys { qw/configure_requires requires build_requires/ }
 
 sub validate_content {
-  my ($self) = @_;
-  $self->SUPER::validate_content;
-  my $content = $self->content;
-  for my $key ( keys %$content ) {
-    Carp::croak "key '$key' must be a hashref" unless ref $content->{$key} eq 'HASH';
-  }
+    my ($self) = @_;
+    $self->SUPER::validate_content;
+    my $content = $self->content;
+    for my $key ( keys %$content ) {
+        Carp::croak "key '$key' must be a hashref" unless ref $content->{$key} eq 'HASH';
+    }
 }
 
 1;

@@ -1,6 +1,7 @@
 use 5.006;
 use strict;
 use warnings;
+
 package CPAN::Testers::Fact::TesterComment;
 # ABSTRACT: comment about a CPAN Tester report
 
