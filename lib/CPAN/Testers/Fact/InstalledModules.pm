@@ -4,6 +4,7 @@ use warnings;
 
 package CPAN::Testers::Fact::InstalledModules;
 # ABSTRACT: Versions of particular modules installed on a system
+# VERSION
 
 use Carp ();
 

@@ -4,6 +4,7 @@ use warnings;
 
 package CPAN::Testers::Fact::Prereqs;
 # ABSTRACT: prerequisites detected in running a CPAN Testers report
+# VERSION
 
 use Carp ();
 

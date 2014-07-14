@@ -4,6 +4,7 @@ use warnings;
 
 package CPAN::Testers::Fact::PerlConfig;
 # ABSTRACT: Perl build and configuration information for a CPAN Testers report
+# VERSION
 
 use Carp ();
 

@@ -4,6 +4,7 @@ use warnings;
 
 package CPAN::Testers::Fact::LegacyReport;
 # ABSTRACT: an email-style report for CPAN Testers
+# VERSION
 
 use Carp ();
 

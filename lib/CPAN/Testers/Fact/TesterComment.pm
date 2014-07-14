@@ -4,6 +4,7 @@ use warnings;
 
 package CPAN::Testers::Fact::TesterComment;
 # ABSTRACT: comment about a CPAN Tester report
+# VERSION
 
 use Carp ();
 
