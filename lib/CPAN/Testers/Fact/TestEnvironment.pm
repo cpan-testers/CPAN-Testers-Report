@@ -34,7 +34,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  my $fact = CPAN::Testers::Fact::TestEnvironment>new(
+  my $fact = CPAN::Testers::Fact::TestEnvironment->new(
     resource => 'cpan:///distfile/RJBS/CPAN-Metabase-Fact-0.001.tar.gz',
     content     => {
       environment_vars => {
