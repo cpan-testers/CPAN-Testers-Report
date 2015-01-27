@@ -2,6 +2,8 @@ Revision history for CPAN-Testers-Report
 
 {{$NEXT}}
 
+    - fixed typo in SYNOPSIS
+
 1.999002  2014-07-14 15:29:20-04:00 America/New_York
 
     - modernized distribution meta files
