@@ -4,7 +4,8 @@ use warnings;
 
 package CPAN::Testers::Fact::InstalledModules;
 # ABSTRACT: Versions of particular modules installed on a system
-# VERSION
+
+our $VERSION = '1.999003';
 
 use Carp ();
 

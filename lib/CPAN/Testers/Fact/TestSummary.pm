@@ -4,7 +4,8 @@ use warnings;
 
 package CPAN::Testers::Fact::TestSummary;
 # ABSTRACT: summary of a CPAN Testers analysis of a distribution
-# VERSION
+
+our $VERSION = '1.999003';
 
 use Carp ();
 

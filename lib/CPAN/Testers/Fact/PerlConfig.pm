@@ -4,7 +4,8 @@ use warnings;
 
 package CPAN::Testers::Fact::PerlConfig;
 # ABSTRACT: Perl build and configuration information for a CPAN Testers report
-# VERSION
+
+our $VERSION = '1.999003';
 
 use Carp ();
 

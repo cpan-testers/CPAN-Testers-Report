@@ -4,7 +4,8 @@ use warnings;
 
 package CPAN::Testers::Fact::TestEnvironment;
 # ABSTRACT: Environment vars and other local context during a CPAN Testers report
-# VERSION
+
+our $VERSION = '1.999003';
 
 use Carp ();
 
