@@ -5,7 +5,7 @@ use warnings;
 package CPAN::Testers::Report;
 # ABSTRACT: CPAN Testers report object
 
-our $VERSION = '1.999003';
+our $VERSION = '1.999004';
 
 use Metabase::Report 0.016 ();
 our @ISA = qw/Metabase::Report/;

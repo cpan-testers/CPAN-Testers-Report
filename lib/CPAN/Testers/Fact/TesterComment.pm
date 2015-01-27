@@ -5,7 +5,7 @@ use warnings;
 package CPAN::Testers::Fact::TesterComment;
 # ABSTRACT: comment about a CPAN Tester report
 
-our $VERSION = '1.999003';
+our $VERSION = '1.999004';
 
 use Carp ();
 

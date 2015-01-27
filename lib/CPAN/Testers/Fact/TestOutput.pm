@@ -5,7 +5,7 @@ use warnings;
 package CPAN::Testers::Fact::TestOutput;
 # ABSTRACT: output from configuration, build and test
 
-our $VERSION = '1.999003';
+our $VERSION = '1.999004';
 
 use Carp ();
 

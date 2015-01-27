@@ -5,7 +5,7 @@ use warnings;
 package CPAN::Testers::Fact::LegacyReport;
 # ABSTRACT: an email-style report for CPAN Testers
 
-our $VERSION = '1.999003';
+our $VERSION = '1.999004';
 
 use Carp ();
 
